@@ -1,16 +1,16 @@
 # repo2prompt
 
-`repo2prompt` is a command-line tool designed to fetch all files from a specified GitHub repository, allowing for selective file ignoring based on patterns. This tool is perfect for users looking to quickly gather repository contents without manually cloning or downloading each file.
+`repo2prompt` is a command-line tool designed to fetch all files from a specified GitHub repository, allowing for selective file ignoring based on patterns. This tool is for users looking to quickly gather repository contents without manually cloning, downloading or copying each file.
 
 ## Installation
 
-`repo2prompt` can be easily installed directly from the GitHub repository using `pip`. To install the latest version, run the following command:
+`repo2prompt` can be installed directly from this GitHub repository using `pip`. To install the latest version, run the following command:
 
 ```bash
 pip install git+https://github.com/Desperadus/repo2prompt
 ```
 
-This command will install `repo2prompt` along with any necessary dependencies. Ensure you have `git` installed on your system and that it is accessible from your command line or terminal. Python 3.8+ is required to run the tool.
+Ensure you have `git` installed on your system and that it is accessible from your command line or terminal. Python 3.8+ is required to run the tool.
 
 ## Usage
 
@@ -35,7 +35,7 @@ repo2prompt https://github.com/Desperadus/repo2prompt -i "*.md"
 
 ## Contributing
 
-Contributions to `repo2prompt` are welcome! Whether it's reporting a bug, discussing improvements, or contributing code, we value your input.
+Contributions to `repo2prompt` are welcome! Whether it's reporting a bug, discussing improvements, or contributing code.
 
 Please feel free to report issues or open pull requests on our [GitHub repository](https://github.com/Desperadus/repo2prompt).
 
