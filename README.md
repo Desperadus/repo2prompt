@@ -23,14 +23,14 @@ repo2prompt <GitHub Repository URL> [options]
 ### Options
 
 - `-t`, `--token`: Specify a GitHub API token to avoid rate limits. Highly recommended for repositories with many files or frequent accesses.
-- `-i`, `--ignore`: Specify regex patterns for files to ignore (e.g., `*.md` or `*.txt`). Can be used multiple times to specify multiple patterns.
+- `-i`, `--ignore`: Specify regex patterns for files to ignore (e.g., `*.md` or `*.txt`). Can be used multiple times to specify multiple patterns. LICENSE and .lock files are ignored by default.
 
 ### Example
 
-To fetch all files from a repository, ignoring Markdown and lock files, you might use:
+To fetch all files from this repository, for example, ignoring Markdown files, you might use:
 
 ```bash
-repo2prompt https://github.com/Desperadus/repo2prompt -i "*.md" -i "*.lock"
+repo2prompt https://github.com/Desperadus/repo2prompt -i "*.md"
 ```
 
 ## Contributing

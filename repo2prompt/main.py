@@ -7,7 +7,9 @@ from urllib.parse import urlparse
 
 def compile_ignore_patterns(patterns):
     """Compile a list of regex patterns from the glob-like patterns provided."""
-    regex_patterns = []
+    default_patterns = [r"LICENSE", r".*\.lock$"]
+    regex_patterns = [re.compile(pattern) for pattern in default_patterns]
+
     for pattern in patterns or []:
         regex_pattern = re.compile(re.escape(pattern).replace(r"\*", ".*"))
         regex_patterns.append(regex_pattern)
