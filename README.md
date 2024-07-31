@@ -38,10 +38,10 @@ repo2prompt https://github.com/Desperadus/repo2prompt -i "*.md"
 
 Contributions to `repo2prompt` are welcome! Whether it's reporting a bug, discussing improvements, or contributing code.
 
-Please feel free to report issues or open pull requests on our [GitHub repository](https://github.com/Desperadus/repo2prompt).
+Please feel free to report issues or open pull requests on my [GitHub repository](https://github.com/Desperadus/repo2prompt).
 
 Or contact me at my email `tomgolf.jelinek@gmail.com`.
 
 ## License
 
-`repo2prompt` is released under the GPL-3.0 License. See the LICENSE file in our GitHub repository for more details.
+`repo2prompt` is released under the GPL-3.0 License. See the LICENSE file in the GitHub repository for more details.
