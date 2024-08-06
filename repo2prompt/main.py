@@ -8,7 +8,8 @@ import os
 
 def compile_patterns(patterns, default_patterns=None):
     """Compile a list of regex patterns from the glob-like patterns provided."""
-    regex_patterns = [re.compile(pattern) for pattern in default_patterns or []]
+    regex_patterns = [re.compile(pattern)
+                      for pattern in default_patterns or []]
 
     for pattern in patterns or []:
         regex_pattern = re.compile(re.escape(pattern).replace(r"\*", ".*"))
@@ -27,7 +28,7 @@ def should_ignore(file_path, ignore_patterns, look_patterns=None):
     return False
 
 
-def get_repo_files(api_url, token, ignore_patterns=None, look_patterns=None):
+def get_repo_files(api_url, token, ignore_patterns=None, look_patterns=None, delay=0.1):
     headers = {"Authorization": f"token {token}"} if token else {}
     response = requests.get(api_url, headers=headers)
     files = []
@@ -38,10 +39,13 @@ def get_repo_files(api_url, token, ignore_patterns=None, look_patterns=None):
             if item["type"] == "file" and not should_ignore(
                 item["path"], ignore_patterns, look_patterns
             ):
-                file_response = requests.get(item["download_url"], headers=headers)
+                file_response = requests.get(
+                    item["download_url"], headers=headers)
                 if file_response.status_code == 200:
-                    files.append(f'"{item["path"]}": "{file_response.text}"\n\n')
-                time.sleep(0.1)  # Delay to avoid hitting GitHub API rate limit
+                    files.append(
+                        f'"{item["path"]}": "{file_response.text}"\n\n')
+                # Delay to avoid hitting GitHub API rate limit
+                time.sleep(delay)
             elif item["type"] == "dir":
                 files.extend(
                     get_repo_files(
@@ -56,7 +60,8 @@ def main():
         description="Fetch all files from a GitHub repo, with support for ignoring or specifically looking for files based on patterns."
     )
     parser.add_argument("repo", help="GitHub repository link")
-    parser.add_argument("-t", "--token", help="GitHub API token to avoid rate limits")
+    parser.add_argument(
+        "-t", "--token", help="GitHub API token to avoid rate limits")
     parser.add_argument(
         "-i",
         "--ignore",
@@ -68,6 +73,13 @@ def main():
         "--look",
         action="append",
         help="Regex pattern for files to specifically look for. Ignores others not matching the pattern. Can be used multiple times.",
+    )
+    parser.add_argument(
+        "-d",
+        "--delay",
+        type=float,
+        help="Delay in seconds to avoid hitting GitHub API rate limit",
+        default=0.1,
     )
     args = parser.parse_args()
 
@@ -86,7 +98,9 @@ def main():
     )
     look_patterns = compile_patterns(args.look)
 
-    files_string = get_repo_files(api_url, args.token, ignore_patterns, look_patterns)
+    files_string = get_repo_files(
+        api_url, args.token, ignore_patterns, look_patterns, delay=args.delay
+    )
     print("".join(files_string))
 
 
