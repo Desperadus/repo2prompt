@@ -22,7 +22,7 @@ repo2prompt <GitHub Repository URL> [options]
 
 ### Options
 
-- `-t`, `--token`: Specify a GitHub API token to avoid rate limits. Highly recommended for repositories with many files or frequent accesses.
+- `-t`, `--token`: Specify a GitHub API token to avoid rate limits. Highly recommended for repositories with many files or frequent accesses. When unspecified it tries to take the value from enviromental variable `GITHUB_PRIVATE_TOKEN`.
 - `-i`, `--ignore`: Specify regex patterns for files to ignore (e.g., `*.md` or `*.txt`). Can be used multiple times to specify multiple patterns. LICENSE and .lock files are ignored by default.
 - `l`, `--look`: Look only for these patterns. Can be used multiple times to specify multiple patterns. (e.g., `*.py` or `*.json`)
 
